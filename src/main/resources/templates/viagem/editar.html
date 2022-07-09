@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar viagem</title>
+</head>
+<body>
+    <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<title>Home</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/viagem">
+				<img th:src="@{/images/logohue.png}" alt="" width="300" height="100">
+			</a>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link" href="/viagem">Cadastrar viagem</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/listar">Listar viagens</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+
+	  <div class="container p-3">
+		<h1 class="mb-3">Editar viagem</h1>
+           
+            <form  th:action="@{/viagem/{id} (id=${viagemId})}" action="#" method="POST" th:object="${viagemDto}" class="border border-danger rounded-3 p-3">
+                <div class="mb-3 ">
+                  <label class="form-label">Data da decolagem</label>
+                  <input type="date" class="form-control" name="dataDecolagem" th:errorclass="is-invalid" th:field="*{dataDecolagem}" >
+                  <div class="invalid-feedback" th:error="*{dataDecolagem}"></div>
+                </div>
+                
+                <div class="mb-3 ">
+                  <label  class="form-label">  Duração de dias </label>
+                  <input placeholder=" Duração de dias de estadia em Marte"  type="number" class="form-control" name="duracaoEstadia" th:errorclass="is-invalid" th:field="*{duracaoEstadia}">
+                  <div class="invalid-feedback" th:error="*{duracaoEstadia}"></div>
+                </div>
+                
+                <div class="mb-3 ">
+                  <label class="form-label">Quantidade de assentos</label>
+                  <input placeholder="Quantidade de assentos disponíveis na nave" type="number" class="form-control" name="qtdAssentos" th:errorclass="is-invalid" th:field="*{qtdAssentos}">
+                  <div class="invalid-feedback" th:error="*{qtdAssentos}"></div>
+                </div>
+                
+                <div class="mb-3 ">
+                  <label class="form-label">Modelo da nave</label>
+                  <input placeholder=" Nome do modelo da nave" class="form-control" name="modeloNave" th:errorclass="is-invalid" th:field="*{modeloNave}">
+                  <div class="invalid-feedback" th:error="*{modeloNave}"></div>
+                </div>
+                
+                <div class="mb-3 ">
+                  <label class="form-label">Nome do primeiro comandante</label>
+                  <input placeholder="Nome do primeiro comandante" class="form-control" name="nomePrimeiroComandante" th:errorclass="is-invalid" th:field="*{nomePrimeiroComandante}">
+                  <div class="invalid-feedback" th:error="*{nomePrimeiroComandante}"></div>
+                </div>
+                
+                <div class="mb-3 ">
+                    <label class="form-label">Matrícula do primeiro comandante</label>
+                    <input placeholder="Matrícula interespacial do Primeiro comandante." class="form-control" name="matriculaPrimeiroComandante" th:errorclass="is-invalid" th:field="*{matriculaPrimeiroComandante}">
+                    <div class="invalid-feedback" th:error="*{matriculaPrimeiroComandante}"></div>
+                </div>
+                
+                <div class="mb-3 ">
+                    <label class="form-label">Nome do segundo comandante</label>
+                    <input placeholder="Nome do segundo comandante" class="form-control" name="nomeSegundoComandante" th:errorclass="is-invalid" th:field="*{nomeSegundoComandante}">
+                    <div class="invalid-feedback" th:error="*{nomeSegundoComandante}"></div>
+    
+                </div>
+                
+                <div class="mb-3 ">
+                    <label class="form-label">Matrícula do segundo comandante</label>
+                    <input placeholder="Matrícula interespacial do segundo comandante." class="form-control" name="matriculaSegundoComandante" th:errorclass="is-invalid" th:field="*{matriculaSegundoComandante}">
+                    <div class="invalid-feedback" th:error="*{matriculaSegundoComandante}"></div>
+    
+                </div>
+                
+                <input type="submit" class="btn btn-danger" value="Atualizar viagem">
+              </form>
+    
+
+	  </div>
+
+	  
+
+
+</body>
+</html>
+</body>
+</html>

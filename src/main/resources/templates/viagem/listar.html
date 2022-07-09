@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <title>Listar viagems</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/viagem">
+				<img th:src="@{images/logohue.png}" alt="" width="300" height="100">
+			</a>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link" href="/viagem">Cadastrar viagem</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/listar">Listar viagens</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+
+      <div class="container">
+          <h1 class="mb-4">Lista de viagens</h1>
+		  <table class="table ">
+			<thead class="table-dark">
+			  <tr>
+				<th>Data da decolagem</th>
+				<th>Duração de dias de estadia em Marte</th>
+				<th>Quantidade de assentos disponíveis</th>
+				<th>Nome do modelo da nave</th>
+				<th>Nome do primeiro comandante</th>
+				<th>Mátricula do primeiro comandante</th>
+				<th>Nome do segundo comandante</th>
+				<th>Mátricula do segundo comandante</th>
+				<th>Data de retorno a terra</th>
+				<th>Edição</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr th:each=" viagem : ${listarViagens}">
+				<td  th:text="${viagem.getDataDecolagemFormatada()}"></td>
+				<td th:text="${viagem.getDuracaoEstadia()}"></td>
+				<td th:text="${viagem.getQtdAssentos()}"></td>
+				<td th:text="${viagem.getModeloNave()}"></td>
+				<td th:text="${viagem.getNomePrimeiroComandante()}"></td>
+				<td th:text="${viagem.getMatriculaPrimeiroComandante()}"></td>
+				<td th:text="${viagem.getNomeSegundoComandante()}"></td>
+				<td th:text="${viagem.getMatriculaSegundoComandante()}"></td>
+				<td th:text="${viagem.calcularDataRetorno()}"></td>
+				<td>
+					<a th:href="@{/viagem/{viagemId}/editar(viagemId = ${viagem.id})}" class="btn btn-warning mb-2">Editar</a>
+					<a  th:href="@{/viagem/{viagemId}/deletar(viagemId = ${viagem.id})}" class="btn btn-danger mb-2">Deletar</a>
+				</td>
+			</tbody>
+		  </table>
+      </div>
+
+</body>
+</html>
